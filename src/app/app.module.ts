@@ -16,8 +16,9 @@ import { HeaderComponent, FooterComponent } from './utils/components';
   ],
   imports: [
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyDGeFJ6LdIE8jTJRgymfzP7HcL3Ll2CYfw",
-      libraries: ["places"]
+      // uncomment below code after generating google API key and replace '*****' with actual key
+      // apiKey: '*****',
+      libraries: ['places']
     }),
     BrowserModule,
     UtilsModule,
