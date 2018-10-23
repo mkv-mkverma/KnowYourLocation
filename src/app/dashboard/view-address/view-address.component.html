@@ -1,0 +1,26 @@
+<div class="row" style="margin-top:70px">
+  <div class="col-sm-12 col-md-12">
+    <h1 class="text-center text-muted"><i class="fa fa-map-marker"></i> Your Location</h1>
+  </div>
+</div>
+<div class="row">
+    <div class="col-md-4" >
+        <ul id="geoData">
+          <li>Full Address: <span>{{address}}</span></li>
+          <li>Postal Code: <span>{{postal_code}}</span></li>
+          <li>State: <span>{{state}}</span></li>
+          <li>City: <span>{{city}}</span></li>
+          <li>Country: <span>{{country}}</span></li>
+        </ul>
+      </div>
+  <div class="col-xs-12 col-sm-8 col-md-8">
+    <agm-map [latitude]="lat" [longitude]="lng" [mapTypeControl]="true"  [scrollwheel]="true" [zoom]="zoom" [fullscreenControl]="true">
+      <agm-marker [latitude]="lat" [longitude]="lng"><agm-info-window>
+          <strong>{{fullAddress}}</strong>
+        </agm-info-window></agm-marker>
+        <agm-circle [latitude]="lat" [longitude]="lng" [radius]="10" [fillOpacity]="0.30" [fillColor]="'#007bff'"></agm-circle>
+    </agm-map>
+    <a [routerLink]="['/search-address']" class="text-center">Search another address</a>
+    <br/><br/> <br/><br/> <br/><br/>
+  </div>
+</div>
