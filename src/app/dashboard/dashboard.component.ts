@@ -11,8 +11,8 @@ export class DashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    if(this.router.url === '/')
-    this.router.navigate(['/search-address']);
-    console.log(this.router.url);
+    if (this.router.url === '/') {
+      this.router.navigate(['/search-address']);
+    }
   }
 }
