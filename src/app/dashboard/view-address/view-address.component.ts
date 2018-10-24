@@ -13,7 +13,7 @@ export class ViewAddressComponent implements OnInit {
   state: string;
   city: string;
   postal_code: string;
-  fullAddress: string; 
+  fullAddress: string;
   constructor() { }
 
   ngOnInit() {
@@ -21,14 +21,12 @@ export class ViewAddressComponent implements OnInit {
   }
 
   getGooglePlace() {
-    let place = JSON.parse(sessionStorage.getItem('googlePlace'));
+    const place = JSON.parse(sessionStorage.getItem('googlePlace'));
     if (place.geometry) {
       this.lat = place.geometry.location.lat;
       this.lng = place.geometry.location.lng;
     }
-    console.log(place);
 
-   
     if (place.address_components) {
       this.address = [
         (place.address_components[0] && place.address_components[0].short_name || ''),
@@ -39,20 +37,20 @@ export class ViewAddressComponent implements OnInit {
 
     console.log(this.address);
 
-    //Location details
+    // Location details
     this.fullAddress = place.formatted_address;
     console.log(place.formatted_address);
-    for (var i = 0; i < place.address_components.length; i++) {
-      if (place.address_components[i].types[0] == 'postal_code') {
+    for (let i = 0; i < place.address_components.length; i++) {
+      if (place.address_components[i].types[0] === 'postal_code') {
         this.postal_code = place.address_components[i].long_name;
       }
-      if (place.address_components[i].types[0] == 'locality') {
+      if (place.address_components[i].types[0] === 'locality') {
         this.city = place.address_components[i].long_name;
       }
-      if (place.address_components[i].types[0] == 'administrative_area_level_1') {
+      if (place.address_components[i].types[0] === 'administrative_area_level_1') {
         this.state = place.address_components[i].long_name;
       }
-      if (place.address_components[i].types[0] == 'country') {
+      if (place.address_components[i].types[0] === 'country') {
         this.country = place.address_components[i].long_name;
       }
     }
